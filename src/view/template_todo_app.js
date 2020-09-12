@@ -4,10 +4,17 @@ function templateToDo (tarefas){
 
     tarefas.forEach(element => {
         //criar os cartões usados cardTarefas
-        card +=
-        `<h1>${element.titulo}</h1> \n
-         <p>${element.descricao}</p> \n`
-        
+        card +=        
+        `<div class="form-group col-md-3">
+        <div class="card" style="width: 18rem;">
+         <div class="card-body">
+           <h5 class="card-title">${element.titulo}</h5>
+           <p class="card-text">${element.descricao}</p>
+           <a href="#" class="card-link">Card link</a>
+           <a href="#" class="card-link">Another link</a>
+         </div>
+       </div>
+       </div>`
     });
 
 return `<!DOCTYPE html>
@@ -37,7 +44,7 @@ return `<!DOCTYPE html>
             </form>
         </div>
     </div>
-    <div id="todoCard">
+    <div id="todoCard" class= "d-flex justify-content-center flex-wrap">
         <!-- Aqui entram os cards de TODO!-->
         ${card}
     </div>

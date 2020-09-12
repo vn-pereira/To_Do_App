@@ -9,9 +9,12 @@ let tarefas = [{
     'descricao': 'Se refrescar do calor'
 }];
 
-module.exports = (app) => { 
+module.exports = (app, db) => { 
     app.get('/', (requisicao, resposta) =>{
-    resposta.send(templateToDo(tarefas));
+        db.all("select * from TAREFAS", [], (err, row) =>{
+            if (err) { throw err }
+            resposta.send(templateToDo(row));
+        })
     })
 }
 

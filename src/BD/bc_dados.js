@@ -11,13 +11,14 @@ db.run("CREATE table IF NOT EXISTS STATUS(nome_status VARCHAR(255))");
 
 db.run("INSERT into TAREFAS(titulo, descricao, grau_prioridade, tempo_expiracao, status_id) VALUES ('Dormir', 'sono da beleza', 'importante', '1 dia', '2')");
 
-db.run("INSERT into TAREFAS(titulo, descricao, grau_prioridade, tempo_expiracao, status_id) VALUES ('tomar café', 'encher a pança', 'importante', '1 dia', '1')");*/
+db.run("INSERT into TAREFAS(titulo, descricao, grau_prioridade, tempo_expiracao, status_id) VALUES ('tomar café', 'encher a pança', 'importante', '1 dia', '1')");
 
 db.all('SELECT * FROM TAREFAS WHERE titulo like ?', ['Academia'],(err, row) => {
 console.log(row);
+});*/
+
+db.all('SELECT*FROM TAREFAS WHERE titulo like ? OR titulo like ?',["Academia", "Dormir"], (err, row) => {
+console.log(row);
 });
 
-db.all('SELECT * FROM TAREFAS WHERE titulo like ? OR titulo like ?',['Academia, Dormir'], (err, row) =>{
-
-});
 module.exports = db;

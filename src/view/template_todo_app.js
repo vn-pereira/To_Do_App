@@ -10,8 +10,8 @@ function templateToDo (tarefas){
          <div class="card-body">
            <h5 class="card-title">${element.titulo}</h5>
            <p class="card-text">${element.descricao}</p>
-           <a href="#" class="card-link">Card link</a>
-           <a href="#" class="card-link">Another link</a>
+           <a href="#" class="btn btn-primary">Editar</a>
+           <a href="#" class="btn btn-primary">Arquivar</a>
          </div>
        </div>
        </div>`
@@ -41,6 +41,7 @@ return `<!DOCTYPE html>
                     <label for="descricaoTarefa"><b>Descrição:</b></label>
                     <textarea class="form-control" id="descricaoTarefa" rows="3" placeholder="Insira a descrição da tarefa"></textarea>
                 </div>
+                    <button class= botao> Enviar </button>
             </form>
         </div>
     </div>

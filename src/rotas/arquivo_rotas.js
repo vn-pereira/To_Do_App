@@ -1,6 +1,5 @@
-const templateToDo = require ('../view/template_todo_app');
-const db = require("../BD/bc_dados");
-const TarefasDAO = require('../DAO/TarefasDAO')
+const ControlaToDo = require('../controller/controlaToDo')
+const controlaToDo = require('../controller/controlaToDo')
 
 /*let tarefas = [{
     'titulo': 'Comer chocolate',
@@ -12,13 +11,6 @@ const TarefasDAO = require('../DAO/TarefasDAO')
 }];*/
 
 module.exports = (app, db) =>{ 
-    app.get('/', (requisicao, resposta) =>{  
-        const tarefasDAO = new TarefasDAO(db); //instância da classe 
-        
-        tarefasDAO.listaTarefas((err, row) =>{
-            if (err) { throw err }
-            resposta.send(templateToDo(row));
-        })    
-    })
+    app.get('/', ControlaToDo.lista())
 }
 

@@ -1,3 +1,6 @@
+const db = require("../BD/bc_dados");
+
+//pegar as informações do banco 
 class TarefasDAO { //a primeira letra das classes vem em maiúscula
     constructor (db){
         this._db = db;
@@ -9,6 +12,11 @@ class TarefasDAO { //a primeira letra das classes vem em maiúscula
             
         })
     }
+
+    //adicionar a tarefa através do POST
+    adicionarTarefa(titulo, descricao){
+        this._db.run("INSERT INTO TAREFAS", [titulo, descricao])
+    }  
 }
 
 module.exports = TarefasDAO;

@@ -32,16 +32,16 @@ return `<!DOCTYPE html>
     </nav>
     <div class="d-flex justify-content-center">
         <div class="w-50 p-4 border rounded shadow-sm"> 
-            <form class="flex-fill">
+            <form class="flex-fill" action="/" method="post" id="formulario">
                 <div class="form-group">
                     <label for="tituloTarefa"><b>Título:</b></label>
-                    <input type="text" class="form-control" id="tituloTarefa" placeholder="Título da tarefa">
+                    <input type="text" name="titulo" class="form-control" id="tituloTarefa" placeholder="Título da tarefa">
                 </div>
                 <div class="form-group">
                     <label for="descricaoTarefa"><b>Descrição:</b></label>
-                    <textarea class="form-control" id="descricaoTarefa" rows="3" placeholder="Insira a descrição da tarefa"></textarea>
+                    <textarea name="descricao" class="form-control" id="descricaoTarefa" rows="3" placeholder="Insira a descrição da tarefa"></textarea>
                 </div>
-                    <button class= botao> Enviar </button>
+                    <button class="botao" onclick="document.getElementById('#formulario').submit()"> Adicionar </button>
             </form>
         </div>
     </div>

@@ -1,5 +1,7 @@
-const ControlaToDo = require('../controller/controlaToDo')
-const controlaToDo = require('../controller/controlaToDo')
+const app = require('../../servidor');
+const ControlaToDo = require('../controller/ControlaToDo');
+const bodyParser = require ('body-parser');
+
 
 /*let tarefas = [{
     'titulo': 'Comer chocolate',
@@ -10,7 +12,11 @@ const controlaToDo = require('../controller/controlaToDo')
     'descricao': 'Se refrescar do calor'
 }];*/
 
-module.exports = (app, db) =>{ 
-    app.get('/', ControlaToDo.lista())
-}
+module.exports = (app) =>{ 
+    app.use(bodyParser.urlencoded({extended: false}));
+    
+    app.get('/', ControlaToDo.lista());    
 
+    app.post('/', ControlaToDo.adicionarCard());
+    
+}

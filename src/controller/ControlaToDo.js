@@ -17,8 +17,17 @@ class ControlaToDo{
             })  
         }         
     }
+
+    static adicionarCard(){
+        return function (requisicao, resposta){
+            const tarefasDAO = new TarefasDAO(db);
+
+            tarefasDAO.adicionarTarefa(requisicao, (err, row)=>{
+                if(err) console.log('Deu erro parça');
+                resposta.send(templateToDo(row));
+            })
+        }
+    }
 }
-
-
 
 module.exports = ControlaToDo;

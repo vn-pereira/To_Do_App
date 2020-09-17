@@ -1,11 +1,16 @@
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('banco_dados');
 
-db.run("CREATE table IF NOT EXISTS USUARIOS(nome VARCHAR(255), sobrenome VARCHAR(255), email VARCHAR(255), senha VARCHAR(255), tarefas_id int)");
-/*status_id = 1- fazer, 2- fazendo, 3-fiz*/ 
-db.run("CREATE table IF NOT EXISTS TAREFAS(titulo VARCHAR(255), descricao VARCHAR(255), tipo VARCHAR(255), grau_prioridade int, tempo_expiracao datetime, status_id int)");
+db.run(`CREATE table IF NOT EXISTS USUARIOS
+(id_usuarios INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, nome VARCHAR(255), sobrenome VARCHAR(255), 
+email VARCHAR(255), senha VARCHAR(255), tarefas_id int)`);
 
-db.run("CREATE table IF NOT EXISTS STATUS(nome_status VARCHAR(255))");
+/*status_id = 1- fazer, 2- fazendo, 3-fiz*/ 
+db.run(`CREATE table IF NOT EXISTS TAREFAS
+(id_tarefas INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, titulo VARCHAR(255), 
+descricao VARCHAR(255), tipo VARCHAR(255), grau_prioridade int, tempo_expiracao datetime, status_id int)`);
+
+db.run(`CREATE table IF NOT EXISTS STATUS(nome_status VARCHAR(255))`);
 
 /*db.run("INSERT into TAREFAS(titulo, descricao, grau_prioridade, tempo_expiracao, status_id) VALUES ('Academia', 'malhar para ficar fitness', 'importante', '1 dia', '1')");
 

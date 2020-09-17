@@ -12,10 +12,14 @@ class TarefasDAO { //a primeira letra das classes vem em maiúscula
             
         })
     }
-
     //adicionar a tarefa através do POST
-    adicionarTarefa(titulo, descricao){
-        this._db.run("INSERT INTO TAREFAS", [titulo, descricao])
+    adicionarTarefa(requisicao, callback){
+        this._db.run(`INSERT INTO TAREFAS (titulo, descricao) 
+        VALUES (?, ?)`, [requisicao.body.titulo, requisicao.body.descricao]);
+        
+        this._db.all("select * from TAREFAS", [], (err, row)=>{ //depois da inserção, mostrará todos os cards
+            callback(err, row)  //mostrará o erro ou a resposta da req
+        })
     }  
 }
 

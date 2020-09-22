@@ -23,7 +23,7 @@ console.log(row);
 });*/
 
 db.all('SELECT*FROM TAREFAS WHERE titulo like ? OR titulo like ?',["Academia", "Dormir"], (err, row) => {
-console.log(row);
+//console.log(row);
 });
 
 module.exports = db;

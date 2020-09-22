@@ -3,7 +3,7 @@ const rotas = require ('./src/rotas/arquivo_rotas');
 
 const app = express();
 const port = 3000;
-         rotas(app);
+         rotas(app, express);
 
 app.listen(port, () =>{
 console.log(`Example app listening at http://locahost:${port}`)

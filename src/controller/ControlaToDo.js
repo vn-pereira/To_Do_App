@@ -9,7 +9,7 @@ class ControlaToDo{
     }
     static lista(){
         return function (requisicao, resposta){  
-            const tarefasDAO = new TarefasDAO(db); //instância da classe 
+            const tarefasDAO = new TarefasDAO(db); //instância da classe para usar o BD
             
             tarefasDAO.listaTarefas((err, row) =>{
                 if (err) { throw err }
@@ -25,6 +25,18 @@ class ControlaToDo{
             tarefasDAO.adicionarTarefa(requisicao, (err, row)=>{
                 if(err) console.log('Deu erro parça');
                 resposta.send(templateToDo(row));
+            })
+        }
+    }
+
+    static deleteCard(){
+        return function(requisicao, resposta){
+            const tarefasDAO = new TarefasDAO(db);
+
+            tarefasDAO.deleteCard(requisicao, (err, row)=>{
+                console.log(requisicao);
+                if(err) console.log('Deu ruim no Delete');
+                resposta.send(console.log('Delete ok'));
             })
         }
     }

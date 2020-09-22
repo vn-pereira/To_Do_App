@@ -21,6 +21,13 @@ class TarefasDAO { //a primeira letra das classes vem em maiúscula
             callback(err, row)  //mostrará o erro ou a resposta da req
         })
     }  
+    //deletar card através do delete
+    deleteCard(requisicao, callback){
+        this._db.run(`DELETE FROM TAREFAS WHERE id_tarefas = ?`, 
+        [requisicao.body.id_tarefas], (err)=>{
+            callback(err);
+        });
+    }
 }
 
 module.exports = TarefasDAO;

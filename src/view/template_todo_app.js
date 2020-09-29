@@ -10,11 +10,37 @@ function templateToDo (tarefas){
          <div class="card-body" data-id-tarefas="${element.id_tarefas}">
            <h5 class="card-title">${element.titulo}</h5>
            <p class="card-text">${element.descricao}</p>
-           <a href="#" class="btn btn-primary">Editar</a>
+           <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#Modal${element.id_tarefas}">Editar</a>
            <a href="#" class="btn btn-primary" onclick="deleteCard(event)">Deletar</a>
          </div>
        </div>
-       </div>`
+       </div>
+    <form action="/editar" method="post" id="editar">
+    <input type="hidden" name="_method" value="put">
+    <div class="modal" id="Modal${element.id_tarefas}" tabindex="-1">
+     <div class="modal-dialog">
+       <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title">${element.titulo}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> <!-- titulo e descrição do modal-->
+      <div class="modal-body" value="${element.titulo}">
+            <input type="hidden" name="editId" value="${element.id_tarefas}">
+            <label for="tituloTarefa"><b>Título:</b></label>
+            <input id="tituloTarefa" name="tituloEdit" value="${element.titulo}"> <br>
+            <label for="descricaoTarefa"><b>Descrição:</b></label>
+            <input id="descricaoTarefa" name="descricaoEdit" value="${element.descricao}">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="submit" class="btn btn-primary">Salvar Mundanças</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>`
     });
 
 return `<!DOCTYPE html>
@@ -41,7 +67,7 @@ return `<!DOCTYPE html>
                     <label for="descricaoTarefa"><b>Descrição:</b></label>
                     <textarea name="descricao" class="form-control" id="descricaoTarefa" rows="3" placeholder="Insira a descrição da tarefa"></textarea>
                 </div>
-                    <button type="button" class="btn btn-primary btn-lg" onclick="document.getElementById('#formulario').submit()"> Adicionar </button>
+                    <button type="button" class="btn btn-primary btn-lg" onclick="document.getElementById('formulario').submit()"> Adicionar </button>
             </form>
         </div>
     </div>

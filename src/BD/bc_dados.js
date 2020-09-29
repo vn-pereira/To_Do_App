@@ -1,5 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('banco_dados');
+const db = new sqlite3.Database('banco_dados.sqlite');
 
 db.run(`CREATE table IF NOT EXISTS USUARIOS
 (id_usuarios INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, nome VARCHAR(255), sobrenome VARCHAR(255), 

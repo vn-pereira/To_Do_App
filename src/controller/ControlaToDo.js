@@ -11,10 +11,14 @@ class ControlaToDo{
         return function (requisicao, resposta){  
             const tarefasDAO = new TarefasDAO(db); //instância da classe para usar o BD
             
-            tarefasDAO.listaTarefas((err, row) =>{
-                if (err) { throw err }
-                resposta.send(templateToDo(row));
-            })  
+            tarefasDAO.listaTarefas()
+                .then((row)=>{//promessa
+                    resposta.send(templateToDo(row));
+                    console.log(row);
+                })
+                .catch((err)=>{
+                    throw err; 
+                });    
         }         
     }
 
@@ -22,32 +26,43 @@ class ControlaToDo{
         return function (requisicao, resposta){
             const tarefasDAO = new TarefasDAO(db);
 
-            tarefasDAO.adicionarTarefa(requisicao, (err, row)=>{
-                if(err) console.log('Deu erro parça');
-                resposta.send(templateToDo(row));
-            });
+            tarefasDAO.adicionarTarefa(requisicao)
+                .then((row)=>{
+                    resposta.redirect('/');
+                    console.log(row);
+                })
+                .catch((err)=>{
+                    console.log(`Deu erro parça ${err}`);
+                })
         }
     }
+
     static editarTarefa(){
       return function(requisicao, resposta){
           const tarefasDAO = new TarefasDAO(db);
 
-          tarefasDAO.atualizaCard(requisicao, (err)=>{
-              console.log(requisicao.body);
-              if(err) console.log('Algo deu errado');
-              resposta.redirect('/');
-          });
+          tarefasDAO.atualizaCard(requisicao)
+            .then(()=>{
+                console.log(requisicao.body);
+                resposta.redirect('/');
+            })
+            .catch((err)=>{
+                console.log(`${err}`); 
+            })        
       }  
     }
     static deleteCard(){
         return function(requisicao, resposta){
             const tarefasDAO = new TarefasDAO(db);
 
-            tarefasDAO.deleteCard(requisicao, (err, row)=>{
-                console.log(requisicao.body);
-                if(err) console.log('Deu ruim no Delete');
-                resposta.send(console.log('Delete ok'));
-            })
+            tarefasDAO.deleteCard(requisicao)
+              .then((row)=>{
+                  console.log(row);
+                  resposta.send(console.log('Delete ok'));
+              })
+               .catch((err)=>{
+                 console.log(`${err}`);
+               }); 
         }
     }
 }

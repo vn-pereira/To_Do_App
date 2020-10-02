@@ -12,7 +12,7 @@ Criação de um aplicativo de tarefas utilizando recursos do nodejs e Data Acces
 ------------
 
 ### Recursos
-**Operações CRUD - Operações CRUD**
+**CRUD operations - Operações CRUD**
 
 - Adicionar tarefas (create/criar)
 - Exibir tarefas (read/ler)
@@ -21,10 +21,12 @@ Criação de um aplicativo de tarefas utilizando recursos do nodejs e Data Acces
 
 ### Para testar:
 Depois de configurar todas as dependências, acesse em sua rede local:
+
 **http://localhost:3000/**
 
 ### Se preferir:
 - A aplicação foi disponibilizada para uso. E isso mesmo, essa aplicação está hospedada em um servidor e para testar basta clicar no link abaixo:
+
 **Link: https://powerful-oasis-60663.herokuapp.com/**
 
 ### Status do projeto:
